@@ -1,0 +1,12 @@
+# PDF处理
+PyPDF2==3.0.1
+fpdf2==2.7.6
+
+# 翻译工具
+googletrans==3.1.0a0
+
+# NLP工具
+spacy==3.7.2
+
+# 文件处理
+python-magic==0.4.27
