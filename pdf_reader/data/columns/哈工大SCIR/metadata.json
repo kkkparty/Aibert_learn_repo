@@ -1,0 +1,9 @@
+{
+  "name": "哈工大SCIR",
+  "description": "哈尔滨工业大学社会计算与信息检索研究中心",
+  "article_count": "206篇",
+  "url": "https://www.jiqizhixin.com/columns/HIT_SCIR",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

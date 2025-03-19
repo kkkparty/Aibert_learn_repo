@@ -1,0 +1,9 @@
+{
+  "name": "PaperWeekly",
+  "description": "推荐、解读、讨论和报道人工智能前沿论文成果的学术平台。",
+  "article_count": "367篇",
+  "url": "https://www.jiqizhixin.com/columns/paperweekly",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

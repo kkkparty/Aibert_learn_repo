@@ -1,0 +1,9 @@
+{
+  "name": "达观数据",
+  "description": "达观数据是一家专注于文本智能处理技术的国家高新技术企业，获得2018年度中国人工智能领域最高奖项 “吴文俊人工智能科技奖”，也是本年度上海市唯一获奖企业。达观数据利用先进的自然语言理解、自然语言生成、知识图谱等技术，为大型企业和政府客户提供文本自动抽取、审核、纠错、搜索、推荐、写作等智能软件系统，让计算机代替人工完成业务流程自动化，大幅度提高企业效率。",
+  "article_count": "82篇",
+  "url": "https://www.jiqizhixin.com/columns/daguanshuju",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

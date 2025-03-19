@@ -1,0 +1,9 @@
+{
+  "name": "AI锐见",
+  "description": "洞察AI行业趋势",
+  "article_count": "64篇",
+  "url": "https://www.jiqizhixin.com/columns/AIruijian",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

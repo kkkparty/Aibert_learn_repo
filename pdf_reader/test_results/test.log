@@ -1,0 +1,17 @@
+2025-01-22 00:29:10,134 - TestRunner - INFO - Starting test suite...
+2025-01-22 00:29:10,134 - TestRunner - INFO - Test 1: Testing URL normalization
+2025-01-22 00:29:10,134 - TestRunner - INFO - Test 1: Passed
+2025-01-22 00:29:10,134 - TestRunner - INFO - Test 2: Testing HTML parsing
+2025-01-22 00:29:10,180 - TestRunner - INFO - Test 2: Passed
+2025-01-22 00:29:10,180 - TestRunner - INFO - Test 3: Testing file operations
+2025-01-22 00:29:10,180 - TestRunner - INFO - Test 3: Passed
+2025-01-22 00:29:10,182 - TestRunner - INFO - Test 4: Testing error handling
+2025-01-22 00:29:10,182 - TestRunner - INFO - Test 4: Passed
+2025-01-22 00:29:10,182 - TestRunner - INFO - 
+        Test Suite Results:
+        Total Tests: 4
+        Passed: 4
+        Failed: 0
+        Duration: 0:00:00.048053
+        Success Rate: 100.00%
+        

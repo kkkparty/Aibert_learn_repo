@@ -1,0 +1,9 @@
+{
+  "name": "AMiner学术头条",
+  "description": "AMiner平台由清华大学计算机系研发，拥有我国完全自主知识产权。系统2006年上线，吸引了全球220个国家/地区800多万独立IP访问，数据下载量230万次，年度访问量1000万，成为学术搜索和社会网络挖掘研究的重要数据和实验平台。",
+  "article_count": "257篇",
+  "url": "https://www.jiqizhixin.com/columns/aminer",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

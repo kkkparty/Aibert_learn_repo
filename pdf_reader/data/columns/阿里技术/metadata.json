@@ -1,0 +1,9 @@
+{
+  "name": "阿里技术",
+  "description": "分享阿里巴巴的技术创新、实战案例、经验总结，内容同步于微信公众号“阿里技术”。",
+  "article_count": "120篇",
+  "url": "https://www.jiqizhixin.com/columns/alijishu",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

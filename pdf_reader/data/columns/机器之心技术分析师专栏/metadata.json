@@ -1,0 +1,9 @@
+{
+  "name": "机器之心技术分析师专栏",
+  "description": "由来自世界各地的专业分析师为你解读前沿进展，技术热点和经典论文。我们的分析师团队由来自于各大名校的硕士和博士，以及一线研究机构的研究员组成。",
+  "article_count": "65篇",
+  "url": "https://www.jiqizhixin.com/columns/Synced-technical-analyst",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}

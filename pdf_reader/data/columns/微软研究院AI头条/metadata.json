@@ -1,0 +1,9 @@
+{
+  "name": "微软研究院AI头条",
+  "description": "专注科研19年，盛产黑科技",
+  "article_count": "253篇",
+  "url": "https://www.jiqizhixin.com/columns/Microsoft_AI",
+  "selector_used": ".column-item",
+  "scraped_articles": 0,
+  "completed": false
+}
