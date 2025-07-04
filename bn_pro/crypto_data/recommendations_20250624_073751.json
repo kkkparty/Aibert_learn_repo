@@ -1,0 +1,1056 @@
+[
+  {
+    "symbol": "WLD",
+    "name": "Worldcoin",
+    "price": 0.919268,
+    "market_cap": 1514938915,
+    "volume_24h": 246605593,
+    "price_change_24h": 10.52951,
+    "price_change_7d": 0,
+    "rsi": 27.075993574168535,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MANA",
+    "name": "Decentraland",
+    "price": 0.261196,
+    "market_cap": 501447312,
+    "volume_24h": 41885277,
+    "price_change_24h": 10.4958,
+    "price_change_7d": 0,
+    "rsi": 29.693579224174954,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BRETT",
+    "name": "Brett",
+    "price": 0.04337203,
+    "market_cap": 430044334,
+    "volume_24h": 50429248,
+    "price_change_24h": 21.43063,
+    "price_change_7d": 0,
+    "rsi": 28.964729068636984,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "POPCAT",
+    "name": "Popcat",
+    "price": 0.300792,
+    "market_cap": 293834125,
+    "volume_24h": 72508297,
+    "price_change_24h": 17.15219,
+    "price_change_7d": 0,
+    "rsi": 26.81775908404869,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "PLUME",
+    "name": "Plume",
+    "price": 0.091535,
+    "market_cap": 232571588,
+    "volume_24h": 32555739,
+    "price_change_24h": 16.34244,
+    "price_change_7d": 0,
+    "rsi": 27.089655194542658,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MOODENG",
+    "name": "Moo Deng",
+    "price": 0.15329,
+    "market_cap": 151681926,
+    "volume_24h": 99743617,
+    "price_change_24h": 20.60251,
+    "price_change_7d": 0,
+    "rsi": 25.86950768811471,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "CSPR",
+    "name": "Casper Network",
+    "price": 0.01142897,
+    "market_cap": 151009385,
+    "volume_24h": 4266472,
+    "price_change_24h": 6.44239,
+    "price_change_7d": 0,
+    "rsi": 26.75083027336224,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BIO",
+    "name": "Bio Protocol",
+    "price": 0.050754,
+    "market_cap": 91038749,
+    "volume_24h": 22325073,
+    "price_change_24h": 14.22743,
+    "price_change_7d": 0,
+    "rsi": 24.599244848982565,
+    "score": 60,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "ALGO",
+    "name": "Algorand",
+    "price": 0.179434,
+    "market_cap": 1550131184,
+    "volume_24h": 83703877,
+    "price_change_24h": 12.57627,
+    "price_change_7d": 0,
+    "rsi": 30.18967189357879,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "SEI",
+    "name": "Sei",
+    "price": 0.243793,
+    "market_cap": 1354108218,
+    "volume_24h": 375061286,
+    "price_change_24h": 21.43285,
+    "price_change_7d": 0,
+    "rsi": 66.6734922036328,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "KAIA",
+    "name": "Kaia",
+    "price": 0.205578,
+    "market_cap": 1203241460,
+    "volume_24h": 80227412,
+    "price_change_24h": 11.08368,
+    "price_change_7d": 0,
+    "rsi": 71.61327603726997,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BONK",
+    "name": "Bonk",
+    "price": 1.389e-05,
+    "market_cap": 1073902055,
+    "volume_24h": 232454879,
+    "price_change_24h": 14.06931,
+    "price_change_7d": 0,
+    "rsi": 28.024854932418492,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "WIF",
+    "name": "dogwifhat",
+    "price": 0.832749,
+    "market_cap": 830358233,
+    "volume_24h": 538848955,
+    "price_change_24h": 21.69953,
+    "price_change_7d": 0,
+    "rsi": 32.83340410494006,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "JASMY",
+    "name": "JasmyCoin",
+    "price": 0.01281083,
+    "market_cap": 620876413,
+    "volume_24h": 51560888,
+    "price_change_24h": 16.39893,
+    "price_change_7d": 0,
+    "rsi": 33.21571449615611,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "PENGU",
+    "name": "Pudgy Penguins",
+    "price": 0.00979034,
+    "market_cap": 614054016,
+    "volume_24h": 129829520,
+    "price_change_24h": 16.66631,
+    "price_change_7d": 0,
+    "rsi": 33.243112513403545,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "SAROS",
+    "name": "Saros",
+    "price": 0.234059,
+    "market_cap": 614050188,
+    "volume_24h": 9374204,
+    "price_change_24h": 9.78191,
+    "price_change_7d": 0,
+    "rsi": 54.95324571959296,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "XCN",
+    "name": "Onyxcoin",
+    "price": 0.01440622,
+    "market_cap": 489477105,
+    "volume_24h": 42086735,
+    "price_change_24h": 12.15269,
+    "price_change_7d": 0,
+    "rsi": 43.693614519566346,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MOVE",
+    "name": "Movement",
+    "price": 0.165459,
+    "market_cap": 431959910,
+    "volume_24h": 420209273,
+    "price_change_24h": 41.6441,
+    "price_change_7d": 0,
+    "rsi": 49.80916265509061,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "TEL",
+    "name": "Telcoin",
+    "price": 0.00429483,
+    "market_cap": 394734168,
+    "volume_24h": 5645027,
+    "price_change_24h": 25.60646,
+    "price_change_7d": 0,
+    "rsi": 45.756353811291866,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "RSR",
+    "name": "Reserve Rights",
+    "price": 0.00648792,
+    "market_cap": 375919065,
+    "volume_24h": 30694843,
+    "price_change_24h": 17.41898,
+    "price_change_7d": 0,
+    "rsi": 39.13920983638953,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MOG",
+    "name": "Mog Coin",
+    "price": 9.22234e-07,
+    "market_cap": 360254199,
+    "volume_24h": 40254890,
+    "price_change_24h": 25.84843,
+    "price_change_7d": 0,
+    "rsi": 35.28176543627778,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "DEEP",
+    "name": "DeepBook",
+    "price": 0.138789,
+    "market_cap": 347051433,
+    "volume_24h": 34654280,
+    "price_change_24h": 21.65706,
+    "price_change_7d": 0,
+    "rsi": 31.71805946786816,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "KAITO",
+    "name": "KAITO",
+    "price": 1.42,
+    "market_cap": 342320667,
+    "volume_24h": 62284702,
+    "price_change_24h": 12.3999,
+    "price_change_7d": 0,
+    "rsi": 28.201591850556312,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "PUMPBTC",
+    "name": "pumpBTC",
+    "price": 103721,
+    "market_cap": 269861295,
+    "volume_24h": 1931.92,
+    "price_change_24h": 6.04868,
+    "price_change_7d": 0,
+    "rsi": 44.368395475625874,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "TURBO",
+    "name": "Turbo",
+    "price": 0.00362302,
+    "market_cap": 249472394,
+    "volume_24h": 58325219,
+    "price_change_24h": 16.63567,
+    "price_change_7d": 0,
+    "rsi": 32.150246479608626,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MOCA",
+    "name": "Moca Network",
+    "price": 0.069698,
+    "market_cap": 207914279,
+    "volume_24h": 29621364,
+    "price_change_24h": 10.58595,
+    "price_change_7d": 0,
+    "rsi": 43.930399187634634,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "ARKM",
+    "name": "Arkham",
+    "price": 0.443101,
+    "market_cap": 195642883,
+    "volume_24h": 57206365,
+    "price_change_24h": 13.34943,
+    "price_change_7d": 0,
+    "rsi": 27.75794083221149,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BORG",
+    "name": "SwissBorg",
+    "price": 0.191161,
+    "market_cap": 187845591,
+    "volume_24h": 409937,
+    "price_change_24h": 11.77561,
+    "price_change_7d": 0,
+    "rsi": 38.95465399383325,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "AI16Z",
+    "name": "ai16z",
+    "price": 0.160366,
+    "market_cap": 176383509,
+    "volume_24h": 80995758,
+    "price_change_24h": 18.27787,
+    "price_change_7d": 0,
+    "rsi": 27.06522161825788,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "NEIRO",
+    "name": "Neiro",
+    "price": 0.00038027,
+    "market_cap": 160349282,
+    "volume_24h": 104580768,
+    "price_change_24h": 12.85458,
+    "price_change_7d": 0,
+    "rsi": 27.47853256571797,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "USELESS",
+    "name": "Useless Coin",
+    "price": 0.134319,
+    "market_cap": 138703903,
+    "volume_24h": 38672696,
+    "price_change_24h": 36.23357,
+    "price_change_7d": 0,
+    "rsi": 85.44529788897354,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "LQTY",
+    "name": "Liquity",
+    "price": 1.37,
+    "market_cap": 133859097,
+    "volume_24h": 85765390,
+    "price_change_24h": 25.21468,
+    "price_change_7d": 0,
+    "rsi": 62.950570836730655,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "ALCH",
+    "name": "Alchemist AI",
+    "price": 0.131568,
+    "market_cap": 111942894,
+    "volume_24h": 24314165,
+    "price_change_24h": 9.19101,
+    "price_change_7d": 0,
+    "rsi": 48.114199236748085,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BANANAS31",
+    "name": "Banana For Scale",
+    "price": 0.01115119,
+    "market_cap": 109414530,
+    "volume_24h": 102372925,
+    "price_change_24h": 41.88549,
+    "price_change_7d": 0,
+    "rsi": 73.8797966166733,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "LCX",
+    "name": "LCX",
+    "price": 0.120095,
+    "market_cap": 108533484,
+    "volume_24h": 3692209,
+    "price_change_24h": 24.5526,
+    "price_change_7d": 0,
+    "rsi": 48.01185520761775,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "DAG",
+    "name": "Constellation",
+    "price": 0.03740449,
+    "market_cap": 106869840,
+    "volume_24h": 4718966,
+    "price_change_24h": 18.57042,
+    "price_change_7d": 0,
+    "rsi": 40.60226948798251,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "FUN",
+    "name": "FUNToken",
+    "price": 0.00998897,
+    "market_cap": 105989281,
+    "volume_24h": 212749342,
+    "price_change_24h": 14.58106,
+    "price_change_7d": 0,
+    "rsi": 90.88952074439105,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "MPLX",
+    "name": "Metaplex",
+    "price": 0.127497,
+    "market_cap": 105362777,
+    "volume_24h": 7316149,
+    "price_change_24h": 8.27042,
+    "price_change_7d": 0,
+    "rsi": 40.77523072365873,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "VRA",
+    "name": "Verasity",
+    "price": 0.00127619,
+    "market_cap": 104764108,
+    "volume_24h": 6431792,
+    "price_change_24h": 16.05969,
+    "price_change_7d": 0,
+    "rsi": 32.063085228514765,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "GOAT",
+    "name": "Goatseus Maximus",
+    "price": 0.098067,
+    "market_cap": 98029810,
+    "volume_24h": 30972084,
+    "price_change_24h": 15.12045,
+    "price_change_7d": 0,
+    "rsi": 25.55347550185141,
+    "score": 50,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BIGTIME",
+    "name": "Big Time",
+    "price": 0.050997,
+    "market_cap": 97138069,
+    "volume_24h": 25836673,
+    "price_change_24h": 11.41583,
+    "price_change_7d": 0,
+    "rsi": 30.50767963558357,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BICO",
+    "name": "Biconomy",
+    "price": 0.093804,
+    "market_cap": 90139882,
+    "volume_24h": 9958232,
+    "price_change_24h": 14.34157,
+    "price_change_7d": 0,
+    "rsi": 33.64204374883161,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "REI",
+    "name": "Rei",
+    "price": 0.089923,
+    "market_cap": 89966905,
+    "volume_24h": 2041467,
+    "price_change_24h": 20.17455,
+    "price_change_7d": 0,
+    "rsi": 49.24723223813616,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "TRIP",
+    "name": "Trip",
+    "price": 10.05,
+    "market_cap": 296588806,
+    "volume_24h": 3580.06,
+    "price_change_24h": 4.34758,
+    "price_change_7d": 0,
+    "rsi": 88.04936052207299,
+    "score": 45,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "LAYER",
+    "name": "Solayer",
+    "price": 0.748696,
+    "market_cap": 157976137,
+    "volume_24h": 110259118,
+    "price_change_24h": 3.89195,
+    "price_change_7d": 0,
+    "rsi": 40.9263565267698,
+    "score": 45,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "BDCA",
+    "name": "BitDCA",
+    "price": 1.05,
+    "market_cap": 139729657,
+    "volume_24h": 255812,
+    "price_change_24h": 3.95233,
+    "price_change_7d": 0,
+    "rsi": 65.88742792973602,
+    "score": 45,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "GAL",
+    "name": "GAL (migrated to Gravity - G)",
+    "price": 0.725234,
+    "market_cap": 92642415,
+    "volume_24h": 1335.54,
+    "price_change_24h": -4.52641,
+    "price_change_7d": 0,
+    "rsi": 42.759551765622334,
+    "score": 45,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "STX",
+    "name": "Stacks",
+    "price": 0.628866,
+    "market_cap": 962966648,
+    "volume_24h": 34851938,
+    "price_change_24h": 12.50889,
+    "price_change_7d": 0,
+    "rsi": 36.10900021059084,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "AERO",
+    "name": "Aerodrome Finance",
+    "price": 0.847204,
+    "market_cap": 711048340,
+    "volume_24h": 137418289,
+    "price_change_24h": 8.32861,
+    "price_change_7d": 0,
+    "rsi": 62.81452283886659,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "EOS",
+    "name": "EOS",
+    "price": 0.512692,
+    "market_cap": 370727031,
+    "volume_24h": 988229,
+    "price_change_24h": 8.40794,
+    "price_change_7d": 0,
+    "rsi": 33.17987513982334,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "CVX",
+    "name": "Convex Finance",
+    "price": 2.62,
+    "market_cap": 214983706,
+    "volume_24h": 15724178,
+    "price_change_24h": 11.52359,
+    "price_change_7d": 0,
+    "rsi": 31.56451483411064,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "IO",
+    "name": "io.net",
+    "price": 0.699826,
+    "market_cap": 116043579,
+    "volume_24h": 55872854,
+    "price_change_24h": 15.14803,
+    "price_change_7d": 0,
+    "rsi": 34.52393482678332,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "SXP",
+    "name": "Solar",
+    "price": 0.17548,
+    "market_cap": 113551687,
+    "volume_24h": 5658751,
+    "price_change_24h": 7.00907,
+    "price_change_7d": 0,
+    "rsi": 37.08382157475689,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "COTI",
+    "name": "COTI",
+    "price": 0.050306,
+    "market_cap": 109800339,
+    "volume_24h": 9470584,
+    "price_change_24h": 12.76643,
+    "price_change_7d": 0,
+    "rsi": 31.645789747097496,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "CONSCIOUS",
+    "name": "Conscious Token",
+    "price": 0.103595,
+    "market_cap": 103594934,
+    "volume_24h": 257356,
+    "price_change_24h": 7.83394,
+    "price_change_7d": 0,
+    "rsi": 38.82378671921656,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "LRC",
+    "name": "Loopring",
+    "price": 0.077478,
+    "market_cap": 96521996,
+    "volume_24h": 11067601,
+    "price_change_24h": 12.25972,
+    "price_change_7d": 0,
+    "rsi": 31.81281609184181,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "OKT",
+    "name": "OKT Chain",
+    "price": 5.04,
+    "market_cap": 89912967,
+    "volume_24h": 495610,
+    "price_change_24h": 7.31931,
+    "price_change_7d": 0,
+    "rsi": 43.10003142170579,
+    "score": 40,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "HNT",
+    "name": "Helium",
+    "price": 2.34,
+    "market_cap": 431260599,
+    "volume_24h": 7160513,
+    "price_change_24h": 7.97401,
+    "price_change_7d": 0,
+    "rsi": 29.195025010107244,
+    "score": 35,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "USDT",
+    "name": "Mantle Bridged USDT (Mantle)",
+    "price": 0.996045,
+    "market_cap": 390882760,
+    "volume_24h": 7372422,
+    "price_change_24h": -0.09696,
+    "price_change_7d": 0,
+    "rsi": 53.92864268471783,
+    "score": 35,
+    "reason": [
+      "价格趋势上升信号",
+      "价格低于价格区间底部"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "JST",
+    "name": "JUST",
+    "price": 0.03482843,
+    "market_cap": 344868186,
+    "volume_24h": 118766995,
+    "price_change_24h": 3.95565,
+    "price_change_7d": 0,
+    "rsi": 49.87815689939053,
+    "score": 35,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "PNUT",
+    "name": "Peanut the Squirrel",
+    "price": 0.220937,
+    "market_cap": 220924391,
+    "volume_24h": 143055601,
+    "price_change_24h": 12.99557,
+    "price_change_7d": 0,
+    "rsi": 23.790206737719927,
+    "score": 35,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "T",
+    "name": "Threshold Network",
+    "price": 0.01801767,
+    "market_cap": 183142740,
+    "volume_24h": 29788053,
+    "price_change_24h": 3.33404,
+    "price_change_7d": 0,
+    "rsi": 55.91571469825231,
+    "score": 35,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "DEXE",
+    "name": "DeXe",
+    "price": 8.06,
+    "market_cap": 460675546,
+    "volume_24h": 12083131,
+    "price_change_24h": 2.75988,
+    "price_change_7d": 0,
+    "rsi": 16.25406164319378,
+    "score": 30,
+    "reason": [
+      "新鲜度指标低估",
+      "价格趋势上升信号"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "USDN",
+    "name": "Noble Dollar (USDN)",
+    "price": 0.999908,
+    "market_cap": 116736826,
+    "volume_24h": 5193222,
+    "price_change_24h": 0.01956,
+    "price_change_7d": 0,
+    "rsi": 64.93749223236114,
+    "score": 30,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 可能回升"
+    ],
+    "timestamp": "20250624_073751"
+  },
+  {
+    "symbol": "FRXUSD",
+    "name": "L2 Standard Bridged frxUSD",
+    "price": 1.0,
+    "market_cap": 94967025,
+    "volume_24h": 1116950,
+    "price_change_24h": 0.17095,
+    "price_change_7d": 0,
+    "rsi": 43.767291384727564,
+    "score": 30,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 可能回升"
+    ],
+    "timestamp": "20250624_073751"
+  }
+]

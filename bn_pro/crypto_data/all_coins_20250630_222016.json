@@ -1,0 +1,22 @@
+[
+  {
+    "id": "btc",
+    "symbol": "BTC",
+    "name": "BTC",
+    "current_price": 50000.0,
+    "market_cap": 2611088629.877087,
+    "total_volume": 261108862.98770872,
+    "price_change_percentage_24h": 4.481788782532554,
+    "last_updated": "2025-06-30T22:20:16.805567"
+  },
+  {
+    "id": "eth",
+    "symbol": "ETH",
+    "name": "ETH",
+    "current_price": 3000.0,
+    "market_cap": 4912490958.127199,
+    "total_volume": 491249095.8127199,
+    "price_change_percentage_24h": -1.803072244085632,
+    "last_updated": "2025-06-30T22:20:16.805567"
+  }
+]

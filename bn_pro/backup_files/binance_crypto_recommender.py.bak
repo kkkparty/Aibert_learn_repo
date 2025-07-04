@@ -1,0 +1,715 @@
+ÿş #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import json
+import time
+import random
+import csv
+import argparse
+import logging
+import smtplib
+import email.utils
+from pathlib import Path
+from datetime import datetime, timedelta
+import pandas as pd
+import numpy as np
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+import math
+
+from binance_api_adapter import BinanceAPIAdapter
+
+# M‘nåe×_
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+class BinanceCryptoRecommender:
+    def __init__(self, use_cache_only=False, use_proxies=False, refresh_cache=False):
+        """RËYS RÆ['^Rgû|ß~ÿO(uBinance API	ÿ"""
+        # nxİOpencîvU_X[(W
+        self.data_dir = Path("crypto_data")
+        self.data_dir.mkdir(exist_ok=True)
+        
+        # RËYSBinance APIM‘hV
+        self.api = BinanceAPIAdapter(
+            use_cache_only=use_cache_only,
+            use_proxies=use_proxies,
+            refresh_cache=refresh_cache
+        )
+        
+        self.use_cache_only = use_cache_only
+        self.refresh_cache = refresh_cache
+        self.portfolio = None
+        
+        # RËYSbŸRT„vˆmo`
+        if use_cache_only:
+            logging.info("O(uX[!j_")
+            print("ò]Ào;mX[!j_ - ÅNO(uX[pencÿNÑS°e÷‹Bl")
+        elif refresh_cache:
+            logging.info("O(u:_6R7R°e!j_")
+            print("ò]Ào;m:_6R7R°e!j_ - ı_eu°s	gX[ÿËYÈ~·ƒÖSg°epenc")
+        else:
+            logging.info("O(uAPI÷‹Bl!j_")
+            print("O(uAPI÷‹Bl!j_ - OÑSQÜ~÷‹Bl·ƒÖSg°epenc")
+        
+        self.holdings = {}
+        self.recommendations = {}
+        self.total_investment = 0
+        self.max_position_size = 0.2  # US*NcÓNg'Y`SÔk
+        
+        # nxİOÓ~œg‡eöN9YX[(W
+        self.csv_file = self.data_dir / 'binance_recommendations.csv'
+        if not self.csv_file.exists():
+            with open(self.csv_file, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(['symbol', 'name', 'price', 'market_cap', 'volume_24h', 
+                                'price_change_7d', 'price_change_24h', 'price_change_30d', 
+                                'rsi', 'action', 'reason', 'buy_time', 'sell_time'])
+    
+    def fetch_coin_data(self, count=1000):
+        """·ƒÖS RÆ['^^:Wpenc"""
+        return self.api.fetch_coin_data(count=count)
+    
+    def fetch_price_history(self, coin_id, days=30):
+        """·ƒÖS RÆ['^÷N<h†SòSpenc"""
+        # Àhåg/f&T/f8^Á‰„vCoinGecko IDÿ—‰lbc
+        try:
+            symbol = self.api.convert_coingecko_id(coin_id)
+            # \Õ‹·ƒÖS†SòSpenc
+            return self.api.fetch_price_history(symbol.replace('USDT', ''), days)
+        except Exception as e:
+            logger.error(f"·ƒÖS{coin_id}÷N<h†SòS1Y%: {e}")
+            return None
+    
+    def calculate_technical_indicators(self, df):
+        """¡‹—{ RÆ['^÷N<h„v€b/gch"""
+        try:
+            # nxİO	g'close'R
+            if 'close' not in df.columns and 'price' in df.columns:
+                df['close'] = df['price']  # |Q¹[NTpenc<h_
+                
+            # nxİOpenc³Y(uN¡‹—{ch
+            if len(df) < 30:
+                logger.warning(f"penc¹pN³ÿàeÕl¡‹—{Œ[te„v€b/gch: ÅN	g {len(df)} *Npenc¹p")
+                return None
+                
+            # ¡‹—{RSI (°eœœ¦^ch) - 14)YhTg
+            delta = df['close'].diff()
+            gain = delta.where(delta > 0, 0).rolling(window=14).mean()
+            loss = -delta.where(delta < 0, 0).rolling(window=14).mean()
+            rs = gain / loss
+            rsi = 100 - (100 / (1 + rs)).iloc[-1]
+            
+            # ¡‹—{MACD (÷N<h‹¿Rch)
+            exp1 = df['close'].ewm(span=12, adjust=False).mean()
+            exp2 = df['close'].ewm(span=26, adjust=False).mean()
+            macd = exp1 - exp2
+            signal = macd.ewm(span=9, adjust=False).mean()
+            
+            # ¡‹—{^—g&^ (÷N<h:Sô•)
+            middle = df['close'].rolling(window=20).mean()
+            std = df['close'].rolling(window=20).std()
+            upper = middle + (std * 2)
+            lower = middle - (std * 2)
+            
+            # ÔŞVg°e„vch<P
+            return {
+                'rsi': rsi,
+                'macd': macd.iloc[-1],
+                'signal': signal.iloc[-1],
+                'upper_band': upper.iloc[-1],
+                'middle_band': middle.iloc[-1],
+                'lower_band': lower.iloc[-1]
+            }
+            
+        except Exception as e:
+            logger.error(f"¡‹—{€b/gchöeúQ•: {e}")
+            return None
+    
+    def analyze_market_trend(self, df):
+        """Rg^:Wp¿R"""
+        # Àhågpenc/f&T³YÛLˆRg
+        if len(df) < 5:
+            return "pencN³"
+            
+        # Rg6eØv÷N‹¿R
+        last_5_prices = df['close'].tail(5).values
+        current_price = last_5_prices[-1]
+        
+        # ¡‹—{MR5)Y÷N<h„vGW<PŒThÆQî]
+        mean_price = np.mean(last_5_prices)
+        std_price = np.std(last_5_prices)
+        
+        # ¡‹—{÷N<hØSS‡s
+        if len(last_5_prices) >= 2:
+            price_change = (current_price - last_5_prices[0]) / last_5_prices[0]
+        else:
+            price_change = 0
+        
+        # $R­e^:W‹¿R
+        if price_change > 0.05:  # 5%åN
+N¨mE^Æ‰:N
+NGS‹¿R
+            return ":_¿R
+NGS"
+        elif price_change > 0.02:  # 2-5%¨mE^Æ‰:N
+NGS
+            return "
+NGS‹¿R"
+        elif price_change < -0.05:  # 5%åN
+NÌE^Æ‰:NNM–‹¿R
+            return ":_¿RNM–"
+        elif price_change < -0.02:  # 2-5%ÌE^Æ‰:NNM–
+            return "NM–‹¿R"
+        elif abs(price_change) <= 0.005:  # ÷N<hàQNNNØS
+            if current_price < mean_price - std_price:
+                return "ïSı€ŞVGS"  # ÷N<hNONGW<PN*NhÆQî]FO3zš[
+            elif current_price > mean_price + std_price:
+                return "ïSı€ŞV=„"  # ÷N<hØšNGW<PN*NhÆQî]FO3zš[
+            else:
+                return "*jØvtet"  # ÷N<h(WGW<PD–Ñâl¨R
+        else:
+            return "íwgâl¨R"  # vQÖNÅ`µQ
+    
+    def determine_buy_action(self, coin, indicators, market_trend, verbose=False):
+        """nxš[/f&T¨cPƒ-pN"""
+        symbol = coin.get('symbol', '').upper()
+        name = coin.get('name', symbol)
+        current_price = coin.get('current_price', 0)
+        market_cap = coin.get('market_cap', 0)
+        volume_24h = coin.get('total_volume', 0)
+        price_change_24h = coin.get('price_change_percentage_24h', 0)
+        price_change_7d = 0  # Binance APIØ¤‹NĞc›O7)YØSS‡s
+        
+        # RËYS¨cPƒpenc
+        recommendation = {
+            'symbol': symbol,
+            'name': name,
+            'price': current_price,
+            'market_cap': market_cap,
+            'volume_24h': volume_24h,
+            'price_change_24h': price_change_24h,
+            'price_change_7d': price_change_7d,
+            'price_change_30d': 0,  # Binance APINôv¥cĞc›O
+            'rsi': indicators.get('rsi', 0) if indicators else 0,
+            'action': "‚fN-pN",
+            'reason': "àef>fáO÷S",
+            'buy_time': '',
+            'sell_time': ''
+        }
+        
+        # ‚Yœg:\sQ.•chÿàeÕlZPúQïS`—³QV{
+        if not indicators:
+            return False, recommendation
+            
+        # Rg€b/gch
+        rsi = indicators.get('rsi', 0)
+        macd = indicators.get('macd', 0)
+        signal = indicators.get('signal', 0)
+        lower_band = indicators.get('lower_band', 0)
+        upper_band = indicators.get('upper_band', 0)
+        
+        # RËYSRgæ‹Å`
+        analysis_details = [
+            f"÷N<h: {current_price}",
+            f"24\öeØSS: {price_change_24h:.2f}%",
+            f"^<P: {market_cap:.2f}",
+            f"¤NfÏ‘(24h): {volume_24h:.2f}",
+            f"RSI(14): {rsi:.2f}",
+            f"MACD: {macd:.6f}, áO÷S¿~: {signal:.6f}",
+            f"^—g&^Nh: {lower_band:.6f}, 
+Nh: {upper_band:.6f}",
+            f"^:W‹¿R: {market_trend}"
+        ]
+        
+        # $R­eTy˜áO÷S
+        buy_signals = []
+        
+        # 1. RSIáO÷S
+        rsi_signal = False
+        if rsi < 30:
+            rsi_signal = True
+            buy_signals.append("RSINON30ÿYN…VS:S")
+        elif rsi < 40:
+            rsi_signal = True
+            buy_signals.append("RSINON40ÿ¥cÑ…VS:S")
+        
+        # 2. MACDáO÷S
+        macd_signal = False
+        if macd > signal and macd < 0:
+            macd_signal = True
+            buy_signals.append("MACDÑ‘ÉSbsS\Ñ‘ÉS")
+        
+        # 3. ^—g&^áO÷S
+        bb_signal = False
+        if current_price < lower_band:
+            bb_signal = True
+            buy_signals.append("÷N<hNON^—g&^Nh")
+        
+        # 4. ^:W‹¿RáO÷S
+        trend_signal = False
+        if "
+NGS" in market_trend:
+            trend_signal = True
+            buy_signals.append(f"^:W{market_trend}")
+        elif market_trend == "ïSı€ŞVGS":
+            trend_signal = True
+            buy_signals.append("^:WïSı€O3zŞVGS")
+        
+        # 5. ÷N<hØS¨RáO÷S
+        price_signal = False
+        if price_change_24h > 5 and price_change_24h < 15:
+            price_signal = True
+            buy_signals.append("24\öe
+N¨m¿R4Y:_²R")
+        elif price_change_24h < -10:
+            price_signal = True
+            buy_signals.append("íwg'YE^NÌÿïSı€…VS")
+        
+        # 9hncNTÄ~T„váO÷Snxš[/f&T¨cPƒ-pN
+        buy_decision = False
+        final_decision = ""
+        
+        # ó\—‰$N*NïygáO÷S
+        signal_count = sum([rsi_signal, macd_signal, bb_signal, trend_signal, price_signal])
+        
+        if signal_count >= 2:
+            # ;N‰¨cPƒúWNRSI + MACDb^—g&^
+            if (rsi_signal and (macd_signal or bb_signal)) or (macd_signal and bb_signal):
+                buy_decision = True
+                recommendation['action'] = "¨cPƒpNeQ"
+                recommendation['reason'] = "€b/gchw}Y"
+                recommendation['buy_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                
+                # ¡‹—{Ä‹R
+                score = self.calculate_recommendation_score(recommendation)
+                recommendation['score'] = score
+                recommendation['reason'] = buy_signals
+                
+                final_decision = f"¨cPƒ-pN | Ä‹R: {score:.1f} | ŸSàV: " + (", ".join(buy_signals))
+            
+        if not buy_decision:
+            recommendation['action'] = "‚fN-pN"
+            reasons = []
+            if not macd_signal:
+                reasons.append("÷N<h‹¿RNM–áO÷S")
+            if not rsi_signal and not bb_signal and not trend_signal:
+                reasons.append(f":ONvQÖN/ecáO÷S")
+            if "NM–" in market_trend:
+                reasons.append(f"^:Wp¿R: {market_trend}")
+                
+            final_decision = "‚fN-pN | t1u: " + (", ".join(reasons) if reasons else "àef>feQ:WáO÷S")
+        
+        # SbpSæ‹Æ~Rg°‹U_
+        if verbose:
+            print(f"\nRg RÆ['^: {symbol} ({recommendation['name']})")
+            for detail in analysis_details:
+                print(f"  {detail}")
+            print(f"  gÈ~³QV{: {final_decision}")
+            
+        recommendation['analysis'] = analysis_details
+        return buy_decision, recommendation
+
+    def append_recommendation_to_csv(self, symbol, data):
+        """\¨cPƒûm R0RCSV‡eöN"""
+        try:
+            with open(self.csv_file, 'a', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    symbol, data['name'], data['price'], data['market_cap'],
+                    data['volume_24h'], data['price_change_7d'], data['price_change_24h'],
+                    data['price_change_30d'], data['rsi'], data['action'], data['reason'],
+                    data['buy_time'], data['sell_time']
+                ])
+        except Exception as e:
+            logger.error(f"İOX[¨cPƒ0RCSVúQ•: {e}")
+            
+    def save_results_with_timestamp(self, recommendations, timestamp=None):
+        """İOX[&^öeô•3b„vRgÓ~œg"""
+        if timestamp is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            
+        # ÆQY‰İOX[„vpencÓ~„g
+        data_to_save = []
+        for rec in recommendations:
+            data_to_save.append({
+                'symbol': rec['symbol'],
+                'name': rec['name'],
+                'price': rec['price'],
+                'market_cap': rec['market_cap'],
+                'volume_24h': rec.get('volume_24h', 0),
+                'price_change_24h': rec['price_change_24h'],
+                'price_change_7d': rec['price_change_7d'],
+                'rsi': rec['rsi'],
+                'score': rec['score'],
+                'reason': rec['reason'],
+                'timestamp': timestamp
+            })
+            
+        # İOX[JSON<h_
+        json_filename = f"crypto_data/binance_recommendations_{timestamp}.json"
+        try:
+            with open(json_filename, 'w', encoding='utf-8') as f:
+                json.dump(data_to_save, f, ensure_ascii=False, indent=2)
+            logger.info(f"ò]İOX[¨cPƒpenc0R: {json_filename}")
+        except Exception as e:
+            logger.error(f"İOX[JSON¨cPƒpenc1Y%: {e}")
+            
+        # İOX[CSV<h_ÿôffN(WExcel-Någw	ÿ
+        csv_filename = f"crypto_data/binance_recommendations_{timestamp}.csv"
+        try:
+            df = pd.DataFrame(data_to_save)
+            
+            # \L]WY„vreasonRhˆlbc:NW[&{2N
+            df['reason'] = df['reason'].apply(lambda x: ', '.join(x) if isinstance(x, list) else str(x))
+            
+            # 	c—_RM–^’c^
+            df = df.sort_values(by='score', ascending=False)
+            
+            # İOX[CSV‡eöN
+            df.to_csv(csv_filename, index=False, encoding='utf-8-sig')  # O(u&^BOM„vUTF-8åN|Q¹[Excel
+            logger.info(f"ò]İOX[’c^T„v¨cPƒpenc0R: {csv_filename}")
+        except Exception as e:
+            logger.error(f"İOX[CSV¨cPƒpenc1Y%: {e}")
+            
+        return {
+            'json_file': json_filename,
+            'csv_file': csv_filename,
+            'recommendations_count': len(recommendations)
+        }
+    
+    def generate_recommendations(self, current_date, limit=None, sort_by='score', save_timestamp=True, save_all_data=False, email_addresses=None, high_score_threshold=50):
+        """ub RÆ['^-pN¨cPƒ"""
+        timestamp = current_date.strftime("%Y%m%d_%H%M%S")
+        
+        # ·ƒÖSMRN*N RÆ['^penc
+        try:
+            coins = self.fetch_coin_data(count=limit or 100)  # Binance API8^RgMR100Íy^Íy
+            all_coins_count = len(coins)
+            logger.info(f"bŸR·ƒÖS {len(coins)} Íy RÆ['^penc")
+            
+            if save_all_data:
+                # İOX[@b	g·ƒÖS„vŸSËYpenc
+                raw_data_path = self.data_dir / f"binance_all_coins_{timestamp}.json"
+                with open(raw_data_path, 'w', encoding='utf-8') as f:
+                    json.dump(coins, f, ensure_ascii=False, indent=2)
+                logger.info(f"ò]İOX[ŸSËY RÆ['^penc0R: {raw_data_path}")
+        except Exception as e:
+            logger.error(f"·ƒÖS RÆ['^penc1Y%: {e}")
+            return None
+            
+        # RËYS¨cPƒRhˆ
+        recommendations = []
+        high_score_recommendations = []  # X[¨PØšR¨cPƒ
+        
+        # ¾‹nÛ¦^ag
+        try:
+            from tqdm import tqdm
+            progress_bar = tqdm(total=len(coins), desc="Rg RÆ['^")
+            has_tqdm = True
+        except ImportError:
+            has_tqdm = False
+            logger.info(f"_ËYRg {len(coins)} Íy RÆ['^...")
+        
+        # M†Sv^RgÏkÍy RÆ['^
+        for i, coin in enumerate(coins):
+            try:
+                symbol = coin.get('symbol', '').upper()
+                coin_id = coin.get('id', symbol.lower())
+                
+                # ·ƒÖS†SòS÷N<hpenc
+                history = self.fetch_price_history(coin_id)
+                if history is None or history.empty:
+                    if has_tqdm:
+                        progress_bar.update(1)
+                    continue
+                    
+                # ¡‹—{€b/gch
+                indicators = self.calculate_technical_indicators(history)
+                if indicators is None:
+                    if has_tqdm:
+                        progress_bar.update(1)
+                    continue
+                
+                # Rg^:W‹¿R
+                market_trend = self.analyze_market_trend(history)
+                
+                # nxš[/f&T¨cPƒ-pN
+                buy_decision, recommendation_data = self.determine_buy_action(
+                    coin, 
+                    indicators, 
+                    market_trend, 
+                    verbose=(i < 3)  # êSSbpSMR3*Næ‹Æ~Rg
+                )
+                
+                # ‚Yœg/fBTCbETHÿàeº‹RgÓ~œg‚YUOÿıÑS®öNåw
+                if coin_id.lower() in ['bitcoin', 'btc', 'ethereum', 'eth'] and email_addresses:
+                    coin_email_subject = f" RÆ['^pencôf°e: {symbol}"
+                    
+                    coin_email_content = f"""
+ RÆ['^pencôf°e:
+
+^ÍyãNx: {symbol}
+Tğy: {name}
+S_MR÷N<h: {current_price}
+^<P: {market_cap}
+24\öe÷N<hØSS: {price_change_24h:.2f}%
+RSIch: {indicators.get('rsi', 0):.2f}
+^:W‹¿R: {market_trend}
+
+€b/gRgÓ~œg: {recommendation_data['action']}
+                    """
+                    
+                    # :NÏk*N®±{0W@WÑSåw
+                    for email_address in email_addresses:
+                        if email_address and email_address.strip():
+                            try:
+                                from bn2bc import send_results_to_qq_email
+                                send_results_to_qq_email(
+                                    to_email=email_address.strip(), 
+                                    subject=coin_email_subject,
+                                    text_content=coin_email_content,
+                                    files=None,  # US^ÍyåwND– R‡eöN
+                                    use_obfuscation=False  # O(uw[/gí‹
+                                )
+                                logger.info(f"ò]ÑS{symbol}pencôf°eåw0R {email_address}")
+                            except Exception as e:
+                                logger.error(f"ÑS{symbol}pencåw®öN1Y%: {e}")
+                
+                # ‚Yœg¨cPƒ-pNÿûm R0R¨cPƒRhˆ
+                if buy_decision:
+                    recommendations.append(recommendation_data)
+                    
+                    # ‚Yœg—_R…Ç–<PNĞc›O†N®±{0W@WÿËzsSÑS®öNåw
+                    if recommendation_data.get('score', 0) >= high_score_threshold and email_addresses:
+                        high_score_recommendations.append(recommendation_data)
+                        
+                        # ÆQYUS*N^Íy„v®öN…Q¹[
+                        coin_email_subject = f"ÑS°sØšÄ‹R RÆ['^: {recommendation_data['symbol']} (Ä‹R: {recommendation_data['score']})"
+                        
+                        coin_email_content = f"""
+ÑS°sN*NÄ‹RƒØš„v RÆ['^!
+
+^ÍyãNx: {recommendation_data['symbol']}
+Tğy: {recommendation_data['name']}
+S_MR÷N<h: {recommendation_data['price']}
+^<P: {recommendation_data['market_cap']}
+24\öe÷N<hØSS: {recommendation_data['price_change_24h']}%
+Ä‹R: {recommendation_data['score']}
+¨cPƒŸSàV: {', '.join(recommendation_data['reason'])}
+
+dk:Nê¨RÑS„vØšÄ‹R RÆ['^åw0
+                        """
+                        
+                        # :NÏk*N®±{0W@WÑSåw
+                        for email_address in email_addresses:
+                            if email_address and email_address.strip():
+                                try:
+                                    from bn2bc import send_results_to_qq_email
+                                    send_results_to_qq_email(
+                                        to_email=email_address.strip(), 
+                                        subject=coin_email_subject,
+                                        text_content=coin_email_content,
+                                        files=None,  # US^ÍyåwND– R‡eöN
+                                        use_obfuscation=False  # O(uw[/gí‹
+                                    )
+                                    logger.info(f"ò]ÑSØšÄ‹R RÆ['^ {recommendation_data['symbol']} åw0R {email_address}")
+                                except Exception as e:
+                                    logger.error(f"ÑSØšÄ‹Råw®öN1Y%: {e}")
+                    
+                # ôf°eÛ¦^ag
+                if has_tqdm:
+                    progress_bar.update(1)
+                elif i % 10 == 0:
+                    logger.info(f"ò]Rg {i+1}/{len(coins)} Íy RÆ['^...")
+                
+            except Exception as e:
+                logger.error(f"Rg RÆ['^ {coin.get('symbol', '')} öeúQ•: {e}")
+                if has_tqdm:
+                    progress_bar.update(1)
+                continue
+                
+        if has_tqdm:
+            progress_bar.close()
+        
+        # 9hnccš[¹e_’c^¨cPƒ
+        if recommendations:
+            if sort_by == 'score':
+                recommendations.sort(key=lambda x: x.get('score', 0), reverse=True)
+            elif sort_by in recommendations[0].keys():
+                recommendations.sort(key=lambda x: x.get(sort_by, 0), reverse=True)
+                
+        # ôf°eS_MRcÓNáOo`
+        self.portfolio = recommendations
+        
+        # SbpS¨cPƒÓ~œg
+        print("\n" + "="*50)
+        print(f"¨cPƒubŒ[bÿqQRg†N {len(coins)}/{all_coins_count} Íy RÆ['^")
+        print(f"vQ-N&{T-pNagöN„v: {len(recommendations)} Íy")
+        print(f"ØšÄ‹R(>={high_score_threshold}R): {len(high_score_recommendations)} Íy")
+        print(f"S_MR¨cPƒRhˆpeÏ‘: {len(recommendations)} Íy")
+        print()
+        
+        if recommendations:
+            print("¨cPƒ RÆ['^’cT (	cü~TÄ‹R’c^):")
+            print("’cT   ^Íy       Tğy                   ÷N<h           ^<P/¿N       24h÷N<hØSS      RSI      Ä‹R     ¨cPƒŸSàV")
+            print("-"*120)
+            
+            for i, rec in enumerate(recommendations[:10]):  # êS>f:yMR10*N
+                print(f"{i+1:<5} {rec['symbol']:<8} {rec['name']:<20} {rec['price']:<15.6f} {rec['market_cap']/1e8:<10.2f} "
+                      f"{rec['price_change_24h']:<10.2f} % {rec['rsi']:<10.2f} "
+                      f"{rec['score']:<8.1f} {', '.join(rec['reason'])}")
+        
+        # İOX[&^öeô•3b„v¨cPƒÓ~œg
+        result_files = {}
+        if save_timestamp and recommendations:
+            results = self.save_results_with_timestamp(recommendations, timestamp)
+            result_files = {
+                'json_file': results.get('json_file', ''),
+                'csv_file': results.get('csv_file', '')
+            }
+            
+        result_summary = {
+            'timestamp': timestamp,
+            'analyzed_count': len(coins),
+            'total_count': all_coins_count,
+            'recommendations_count': len(recommendations),
+            'high_score_count': len(high_score_recommendations),
+            'recommendations_fields': ['symbol', 'name', 'price', 'market_cap', 
+                                       'price_change_24h', 'rsi', 'score', 'reason'],
+            'result_files': result_files
+        }
+            
+        return result_summary
+
+    def simulate_daily_reminders(self, days=1, limit=None, sort_by='score', save_timestamp=True, save_all_data=False, email_addresses=None, high_score_threshold=50):
+        """!jßbÏkåe RÆ['^Ğc’‘"""
+        logger.info(f"_ËY!jßb RÆ['^Ğc’‘ÿRg)Ype: {days}")
+        
+        # ·ƒÖSS_MRåeg
+        current_date = datetime.now()
+        
+        # ub¨cPƒ
+        recommendations = self.generate_recommendations(
+            current_date=current_date,
+            limit=limit,
+            sort_by=sort_by,
+            save_timestamp=save_timestamp,
+            save_all_data=save_all_data,
+            email_addresses=email_addresses,
+            high_score_threshold=high_score_threshold
+        )
+        
+        return recommendations
+
+    def calculate_recommendation_score(self, coin_data):
+        """¡‹—{¨cPƒ^Íy„vü~TÄ‹Rÿ(uN’c^"""
+        score = 0
+        
+        # 1. 9hnc€b/gchÄ‹R
+        rsi = coin_data.get('rsi', 50)
+        # RSI: ¥cÑ30(…VS)—_ØšRÿ¥cÑ70(…pN)—_NOR
+        if rsi <= 30:
+            score += 20 * (1 - rsi/30)  # RSIŠNORŠØšÿgØš20R
+        elif rsi <= 50:
+            score += 10 * (50 - rsi) / 20  # 30-50KNô•ÿRpeÏQÿgØš10R
+            
+        # 2. 9hnc^:W‹¿RÄ‹R
+        reason = coin_data.get('reason', '')
+        if isinstance(reason, list):
+            reason_text = ''.join(reason)
+        else:
+            reason_text = str(reason)
+            
+        if ':_¿R
+NGS' in reason_text:
+            score += 15
+        elif '
+NGS‹¿R' in reason_text:
+            score += 10
+        elif 'íwgâl¨R' in reason_text:
+            score += 5
+            
+        # 3. 9hncMACDáO÷SÄ‹R
+        if 'MACDÑ‘ÉS' in reason_text:
+            score += 20
+            
+        # 4. 9hnc^—g&^Å`µQÄ‹R
+        if '÷N<hNON^—g&^Nh' in reason_text:
+            score += 15
+            
+        # 5. ÷N<h¨RÏ‘Ä‹R
+        price_change_24h = coin_data.get('price_change_24h', 0)
+        
+        # íwg¨Rı€Ù~ˆN RR
+        if price_change_24h > 5:
+            score += 5  # 24\öe¨mE^…Ç5%
+        elif 2 < price_change_24h <= 5:
+            score += 3  # 24\öe¨mE^2-5%
+            
+        # 6. b¤NÏ‘/^<PÔk‡s (Am¨R'`ch)
+        market_cap = coin_data.get('market_cap', 0)
+        volume_24h = coin_data.get('volume_24h', 0)
+        if market_cap > 0:
+            liquidity_ratio = volume_24h / market_cap
+            # Am¨R'`Ôk‡s8^(W0-0.5KNô•ÿØšAm¨R'`Ù~ˆN RR
+            score += min(liquidity_ratio * 100, 15)  # gØš15R
+            
+        # 7. ^<PÄ‹R ('Y^<P^ÍyÎ˜i–ôfNO)
+        # 9hnc^<PƒôVR§~
+        if market_cap >= 10_000_000_000:  # 'Y^<P (> 100¿N)
+            score += 5
+        elif market_cap >= 1_000_000_000:  # -N^<P (> 10¿N)
+            score += 3
+        elif market_cap >= 100_000_000:  # \^<P (> 1¿N)
+            score += 1
+            
+        return score
+
+# KmÕ‹ãNx
+if __name__ == "__main__":
+    # ã‰g}TäNLˆÂSpe
+    parser = argparse.ArgumentParser(description='Binance RÆ['^Rgå]wQ')
+    parser.add_argument('--cache-only', action='store_true', help='ÅNO(uX[pencÿNÑSAPI÷‹Bl')
+    parser.add_argument('--refresh-cache', action='store_true', help=':_6R7R°eX[ÿı_eu°s	gX[')
+    parser.add_argument('--limit', type=int, default=100, help='Rg„v^ÍypeÏ‘ (Ø¤‹100)')
+    parser.add_argument('--use-proxies', action='store_true', help='O(uãNtIP')
+    parser.add_argument('--email', type=str, help='ÑSÓ~œg0Rcš[®±{ (Y*N®±{(u÷SR”–)')
+    args = parser.parse_args()
+
+    # RËYS¨cPƒhV
+    recommender = BinanceCryptoRecommender(
+        use_cache_only=args.cache_only,
+        refresh_cache=args.refresh_cache,
+        use_proxies=args.use_proxies
+    )
+    
+    # ĞLˆRg
+    email_list = args.email.split(',') if args.email else None
+    results = recommender.simulate_daily_reminders(
+        limit=args.limit,
+        email_addresses=email_list
+    )
+    
+    if results:
+        print("\nRgÓ~œgXd‰:")
+        print(f"- öeô•3b: {results['timestamp']}")
+        print(f"- Rg^Íype: {results['analyzed_count']} / {results['total_count']}")
+        print(f"- ¨cPƒ^Íype: {results['recommendations_count']}")
+        
+        if 'result_files' in results:
+            print("\nÓ~œg‡eöN:")
+            for file_type, file_path in results['result_files'].items():
+                if file_path:
+                    print(f"- {file_type}: {file_path}")
+    else:
+        print("Rg*gÔŞVÓ~œg")

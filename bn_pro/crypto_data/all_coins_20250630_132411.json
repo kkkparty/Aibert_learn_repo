@@ -1,0 +1,102 @@
+[
+  {
+    "id": "btc",
+    "symbol": "BTC",
+    "name": "BTC",
+    "current_price": 50000.0,
+    "market_cap": 3713046195.8287516,
+    "total_volume": 371304619.58287513,
+    "price_change_percentage_24h": -4.862242885782515,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "eth",
+    "symbol": "ETH",
+    "name": "ETH",
+    "current_price": 3000.0,
+    "market_cap": 201058429.16362777,
+    "total_volume": 20105842.916362777,
+    "price_change_percentage_24h": -2.086105882883633,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "bnb",
+    "symbol": "BNB",
+    "name": "BNB",
+    "current_price": 400.0,
+    "market_cap": 17247867.22554686,
+    "total_volume": 1724786.722554686,
+    "price_change_percentage_24h": 0.9618600631216943,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "ada",
+    "symbol": "ADA",
+    "name": "ADA",
+    "current_price": 1.2,
+    "market_cap": 106929.14273868443,
+    "total_volume": 10692.914273868442,
+    "price_change_percentage_24h": 0.8083608699045861,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "doge",
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "current_price": 0.2,
+    "market_cap": 7791.363562228861,
+    "total_volume": 779.1363562228861,
+    "price_change_percentage_24h": -4.727647213021383,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "xrp",
+    "symbol": "XRP",
+    "name": "XRP",
+    "current_price": 0.8,
+    "market_cap": 67339.90034292007,
+    "total_volume": 6733.990034292007,
+    "price_change_percentage_24h": -2.21841055514607,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "dot",
+    "symbol": "DOT",
+    "name": "DOT",
+    "current_price": 20.0,
+    "market_cap": 905444.5650116126,
+    "total_volume": 90544.45650116126,
+    "price_change_percentage_24h": -4.981431158747004,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "uni",
+    "symbol": "UNI",
+    "name": "UNI",
+    "current_price": 15.0,
+    "market_cap": 768346.9489038304,
+    "total_volume": 76834.69489038303,
+    "price_change_percentage_24h": -1.4910311512828835,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "sol",
+    "symbol": "SOL",
+    "name": "SOL",
+    "current_price": 100.0,
+    "market_cap": 3331120.530534058,
+    "total_volume": 333112.0530534058,
+    "price_change_percentage_24h": 0.4959832252445828,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  },
+  {
+    "id": "link",
+    "symbol": "LINK",
+    "name": "LINK",
+    "current_price": 25.0,
+    "market_cap": 1805587.64136839,
+    "total_volume": 180558.76413683902,
+    "price_change_percentage_24h": 0.2484853761675998,
+    "last_updated": "2025-06-30T13:24:11.209080"
+  }
+]

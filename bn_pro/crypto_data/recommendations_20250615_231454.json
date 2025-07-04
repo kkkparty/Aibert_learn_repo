@@ -1,0 +1,82 @@
+[
+  {
+    "symbol": "BCH",
+    "name": "Bitcoin Cash",
+    "price": 457.59,
+    "market_cap": 9098956385,
+    "volume_24h": 273801573,
+    "price_change_24h": 5.58947,
+    "price_change_7d": 0,
+    "rsi": 67.4235889416342,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250615_231454"
+  },
+  {
+    "symbol": "TKX",
+    "name": "Tokenize Xchange",
+    "price": 35.64,
+    "market_cap": 2858051220,
+    "volume_24h": 26168835,
+    "price_change_24h": 21.42634,
+    "price_change_7d": 0,
+    "rsi": 64.52795127503128,
+    "score": 50,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250615_231454"
+  },
+  {
+    "symbol": "WBT",
+    "name": "WhiteBIT Coin",
+    "price": 39.61,
+    "market_cap": 5708661503,
+    "volume_24h": 57929173,
+    "price_change_24h": 1.33711,
+    "price_change_7d": 0,
+    "rsi": 87.95060831689648,
+    "score": 45,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 强势上升"
+    ],
+    "timestamp": "20250615_231454"
+  },
+  {
+    "symbol": "SKY",
+    "name": "Sky",
+    "price": 0.088229,
+    "market_cap": 1888376454,
+    "volume_24h": 8069456,
+    "price_change_24h": 0.74463,
+    "price_change_7d": 0,
+    "rsi": 69.98209809224278,
+    "score": 35,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 上升趋势"
+    ],
+    "timestamp": "20250615_231454"
+  },
+  {
+    "symbol": "USDT0",
+    "name": "USDT0",
+    "price": 1.002,
+    "market_cap": 1546341492,
+    "volume_24h": 161233937,
+    "price_change_24h": 0.19417,
+    "price_change_7d": 0,
+    "rsi": 49.3238499459319,
+    "score": 30,
+    "reason": [
+      "价格趋势上升信号",
+      "市场走势: 可能回升"
+    ],
+    "timestamp": "20250615_231454"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "symbol": "BTCUSDT",
+    "baseAsset": "BTC",
+    "price": 50000.0,
+    "volume": 211376325.52992764,
+    "quoteVolume": 7936308171187.026,
+    "priceChangePercent": 2.019109350594835
+  },
+  {
+    "symbol": "ETHUSDT",
+    "baseAsset": "ETH",
+    "price": 3000.0,
+    "volume": 7539020.351048952,
+    "quoteVolume": 22654553077.563316,
+    "priceChangePercent": 4.81702587450193
+  },
+  {
+    "symbol": "BNBUSDT",
+    "baseAsset": "BNB",
+    "price": 400.0,
+    "volume": 3815437.9570067357,
+    "quoteVolume": 235763845.39518124,
+    "priceChangePercent": -2.0659193101459894
+  },
+  {
+    "symbol": "SOLUSDT",
+    "baseAsset": "SOL",
+    "price": 100.0,
+    "volume": 228242.93692763467,
+    "quoteVolume": 83210868.20767327,
+    "priceChangePercent": -2.39617184561848
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "baseAsset": "AVAX",
+    "price": 35.0,
+    "volume": 161882.4717564701,
+    "quoteVolume": 6339025.979646801,
+    "priceChangePercent": -3.9322697608583193
+  }
+]

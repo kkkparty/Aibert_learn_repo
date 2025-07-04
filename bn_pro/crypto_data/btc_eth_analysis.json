@@ -1,0 +1,30 @@
+[
+  {
+    "id": "bitcoin",
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "price": 50000.0,
+    "price_change_24h": 1.7737233434378084,
+    "price_change_7d": -15.099190025432957,
+    "volume_24h": 4988929.823529754,
+    "rsi": 47.552231083031366,
+    "trend": "强势下跌",
+    "action": "Hold",
+    "reason": "无明显信号",
+    "timestamp": "2025-06-30T13:38:52.918580"
+  },
+  {
+    "id": "ethereum",
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "price": 3000.0,
+    "price_change_24h": 3.7958205073176234,
+    "price_change_7d": 0.0108785914933585,
+    "volume_24h": 5586009.434480857,
+    "rsi": 50.49909802799572,
+    "trend": "强势下跌",
+    "action": "Hold",
+    "reason": "无明显信号",
+    "timestamp": "2025-06-30T13:38:52.922585"
+  }
+]

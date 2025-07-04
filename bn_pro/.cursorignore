@@ -1,0 +1,25 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+.git/
+.vscode/
+.cursorignore
+.cursorignore       
+.json
+.png
+.jpg
+.jpeg
+.gif
+.bmp
+.tiff
+.ico
+.webp
+.svg
+.mp4
+.mp3
+.wav
+.ogg
+.flac
+.aac
+.m4a
+.m4v
+.m4b
+.m4p
