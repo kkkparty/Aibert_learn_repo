@@ -1,0 +1,14 @@
+# HTML 截图功能依赖
+# Python 包依赖
+
+# Playwright - 用于浏览器自动化截图
+playwright>=1.40.0
+
+# Markdown 处理（用于 PDF 导出，可选）
+markdown>=3.4.0
+
+# 注意：还需要安装系统依赖
+# 1. Playwright 浏览器: python -m playwright install chromium
+# 2. wkhtmltopdf: sudo apt-get install wkhtmltopdf (Ubuntu/Debian)
+#
+# 完整安装指南: scripts/INSTALL_DEPENDENCIES.md
